@@ -7,19 +7,23 @@ services:
     region: oregon
     plan: free
     rootDir: backend
-    buildCommand: npm install && npm run build
-    startCommand: npm run db:migrate && npm start
+    buildCommand: npm install && npm run build && npx prisma migrate deploy
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
+      - key: NODE_VERSION
+        value: 20
       - key: DATABASE_URL
-        sync: false  # Paste your Supabase connection string
+        sync: false
+      - key: DIRECT_URL
+        sync: false
       - key: REDIS_URL
-        sync: false  # Paste your Upstash Redis URL
+        sync: false
       - key: JWT_SECRET
         generateValue: true
       - key: TMDB_API_KEY
-        sync: false  # Your TMDB API key
+        sync: false
       - key: FRONTEND_URL
-        sync: false  # Your Vercel frontend URL
+        sync: false
     healthCheckPath: /health
