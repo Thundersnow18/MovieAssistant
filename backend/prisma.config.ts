@@ -7,5 +7,6 @@ export default defineConfig({
   schema: path.join('prisma', 'schema.prisma'),
   datasource: {
     url: process.env.DATABASE_URL || 'postgresql://localhost:5432/movie_assistant',
+    directUrl: process.env.DIRECT_URL,
   },
 });
