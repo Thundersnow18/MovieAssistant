@@ -1,3 +1,4 @@
+console.log('🚀 [Bootstrap] Starting Movie Assistant API process...');
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -64,6 +65,8 @@ app.use(errorHandler);
 // ─── Start Server ───
 const PORT = process.env.PORT || 5000;
 const HOST = '0.0.0.0'; // Required for container environments (Render, Docker)
+
+console.log(`🚀 [Bootstrap] Attempting to listen on ${HOST}:${PORT}...`);
 
 app.listen(Number(PORT), HOST, () => {
   console.log(`\n🎬 Movie Assistant API`);
