@@ -1,0 +1,25 @@
+# Render Blueprint — backend only (DB on Supabase, Cache on Upstash)
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: movie-assistant-api
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm run db:migrate && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false  # Paste your Supabase connection string
+      - key: REDIS_URL
+        sync: false  # Paste your Upstash Redis URL
+      - key: JWT_SECRET
+        generateValue: true
+      - key: TMDB_API_KEY
+        sync: false  # Your TMDB API key
+      - key: FRONTEND_URL
+        sync: false  # Your Vercel frontend URL
+    healthCheckPath: /health

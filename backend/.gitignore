@@ -1,0 +1,14 @@
+node_modules
+dist
+
+# Environment variables (secrets)
+.env
+
+# Prisma
+/generated/prisma
+*.db
+*.db-journal
+
+# OS
+.DS_Store
+Thumbs.db

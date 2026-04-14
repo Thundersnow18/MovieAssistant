@@ -1,0 +1,60 @@
+// This is your Prisma schema file
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String         @id @default(uuid())
+  name          String         @default("")
+  email         String         @unique
+  password      String
+  preferences   Preference?
+  watchHistory  WatchHistory[]
+  savedContent  SavedContent[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([email])
+}
+
+model Preference {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  preferredGenres String  @default("[]")
+  minRating      Float    @default(0.0)
+  startYear      Int?
+  endYear        Int?
+  language       String   @default("en")
+  contentType    String   @default("movie")
+}
+
+model WatchHistory {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tmdbId    Int
+  mediaType String
+  genres    String?  @default("[]")
+  director  String?  @default("")
+  watchedAt DateTime @default(now())
+
+  @@unique([userId, tmdbId])
+  @@index([userId])
+}
+
+model SavedContent {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tmdbId    Int
+  mediaType String
+  addedAt   DateTime @default(now())
+
+  @@unique([userId, tmdbId])
+  @@index([userId])
+}
