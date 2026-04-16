@@ -23,7 +23,18 @@ const allowedOrigins = [
 ].filter(Boolean) as string[];
 
 app.use(cors({
-  origin: allowedOrigins.length > 0 ? allowedOrigins : '*',
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    
+    const allowed = allowedOrigins.includes(origin) || origin.endsWith('.vercel.app');
+    
+    if (allowed) {
+      callback(null, true);
+    } else {
+      console.log(`[CORS] Blocked origin: ${origin}`);
+      callback(null, false);
+    }
+  },
   credentials: true,
 }));
 
