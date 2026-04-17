@@ -212,26 +212,15 @@ input, select {
   transition: all 0.2s var(--ease-smooth);
 }
 
-.btn-primary {
+.btn-primary, .btn-secondary {
   background: var(--text-primary);
   color: var(--bg-primary);
   border: 1px solid var(--text-primary);
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-secondary:hover {
   transform: translateY(-2px);
   box-shadow: 6px 6px 0px var(--border-glass);
-}
-
-.btn-secondary {
-  background: transparent;
-  border: 1px solid var(--border-glass);
-  color: var(--text-primary);
-}
-
-.btn-secondary:hover {
-  background: var(--bg-secondary);
-  border-color: var(--text-primary);
 }
 
 .btn-ghost {

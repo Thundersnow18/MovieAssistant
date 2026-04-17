@@ -6,7 +6,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import MovieCard from "@/components/MovieCard";
 import MovieModal from "@/components/MovieModal";
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Filter, Zap, Bookmark, Film } from 'lucide-react';
+import { Filter, Zap, Bookmark, Compass } from 'lucide-react';
 
 export default function Landing() {
   const [trending, setTrending] = useState<any[]>([]);
@@ -231,7 +231,7 @@ export default function Landing() {
               </p>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
                 <Link href="/discover" className="btn btn-primary" style={{ padding: '16px 36px', fontSize: '1.05rem', letterSpacing: '0.1em', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  <Film size={20} /> START DISCOVERING
+                  <Compass size={20} /> START DISCOVERING
                 </Link>
               </motion.div>
             </div>

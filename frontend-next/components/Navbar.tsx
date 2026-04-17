@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
-import { Sun, Moon, Film, User, Menu, X, LogIn } from 'lucide-react';
+import { Sun, Moon, Clapperboard, User, Menu, X, LogIn } from 'lucide-react';
 import { motion, useScroll, useMotionValueEvent, useAnimation } from 'framer-motion';
 
 export default function Navbar() {
@@ -81,7 +81,7 @@ export default function Navbar() {
       <style dangerouslySetInnerHTML={{ __html: navStyles }} />
       <div className="container" style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Link href="/" className="navbar-brand" onClick={() => setMobileMenuOpen(false)}>
-          <Film className="icon" size={28} style={{ color: 'var(--text-primary)' }} />
+          <Clapperboard className="icon" size={28} style={{ color: 'var(--text-primary)' }} />
           <span className="gradient-text">MovieAssist</span>
         </Link>
 
