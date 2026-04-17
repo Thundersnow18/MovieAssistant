@@ -504,7 +504,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
    ═══════════════════════════════════════════════ */
 
 .landing-hero {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1453,6 +1453,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
   .hero-cta {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .navbar-links {
