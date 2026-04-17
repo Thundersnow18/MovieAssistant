@@ -258,7 +258,7 @@ export default function MovieModal({ movieId, onClose }: MovieModalProps) {
             </div>
           )}
 
-          <div className="actions-wrapper" style={{ marginTop: '30px', display: 'flex', gap: '12px', borderTop: '1px solid var(--border-glass)', paddingTop: '20px' }}>
+          <div className="actions-wrapper" style={{ marginTop: '30px', display: 'flex', flexWrap: 'wrap', gap: '12px', borderTop: '1px solid var(--border-glass)', paddingTop: '20px' }}>
             {user && (
               <>
                 <button className={`btn ${isSaved ? 'btn-ghost' : 'btn-primary'}`} onClick={handleSave} disabled={isSaved} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

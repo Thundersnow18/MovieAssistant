@@ -201,7 +201,7 @@ export default function Preferences() {
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '3rem' }}>
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', width: '100%' }}>
               <button 
                 type="button" 
                 className="btn btn-primary" 
@@ -216,11 +216,11 @@ export default function Preferences() {
                     setMessage('Failed to clear preferences.');
                   }
                 }}
-                style={{ display: 'flex', alignItems: 'center' }}
+                style={{ flex: '1 1 200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
                 <RotateCcw size={18} style={{ marginRight: '8px' }}/> CLEAR PREFERENCES
               </button>
-              <button type="submit" className="btn btn-primary" disabled={saving}>
+              <button type="submit" className="btn btn-primary" disabled={saving} style={{ flex: '1 1 200px' }}>
                 {saving ? 'Saving...' : <><Save size={18} style={{ marginRight: '8px' }}/> SAVE PREFERENCES</>}
               </button>
             </div>
