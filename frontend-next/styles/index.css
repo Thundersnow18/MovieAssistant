@@ -1443,6 +1443,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .story-scale-container > div {
+  width: 400px;
+  height: 711px;
   transform: scale(0.85);
   transform-origin: top left;
   border-radius: 28px;
