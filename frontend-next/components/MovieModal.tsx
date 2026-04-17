@@ -244,35 +244,50 @@ export default function MovieModal({ movieId, onClose }: MovieModalProps) {
             </>
           )}
 
-          {details.trailer && (
-            <div style={{ marginTop: '24px' }}>
-              <h3 className="modal-section-title">Trailer</h3>
+          <div style={{ 
+            marginTop: '32px', 
+            borderTop: '1px solid var(--border-glass)', 
+            paddingTop: '24px', 
+            display: 'grid', 
+            gap: '12px', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' 
+          }}>
+            {details.trailer && (
               <a
                 href={`https://www.youtube.com/watch?v=${details.trailer.key}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
+                style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
               >
-                ▶ Watch Trailer
+                ▶ WATCH TRAILER
               </a>
-            </div>
-          )}
+            )}
 
-          <div className="actions-wrapper" style={{ marginTop: '30px', display: 'flex', flexWrap: 'wrap', gap: '12px', borderTop: '1px solid var(--border-glass)', paddingTop: '20px' }}>
             {user && (
               <>
-                <button className={`btn ${isSaved ? 'btn-ghost' : 'btn-primary'}`} onClick={handleSave} disabled={isSaved} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  {isSaved ? <Check size={18} color="var(--text-primary)" /> : <Bookmark size={18} />} 
-                  {isSaved ? 'Saved' : 'Add to Watchlist'}
+                <button 
+                  className={`btn ${isSaved ? 'btn-secondary' : 'btn-primary'}`} 
+                  onClick={handleSave} 
+                  style={{ width: '100%', display: 'flex', justifyContent: 'center', opacity: isSaved ? 0.7 : 1 }}
+                >
+                  {isSaved ? <Check size={18} /> : <Bookmark size={18} />} 
+                  {isSaved ? 'SAVED TO WATCHLIST' : 'ADD TO WATCHLIST'}
                 </button>
-                <button className={`btn ${isWatched ? 'btn-ghost' : 'btn-secondary'}`} onClick={handleWatch} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  {isWatched ? <Check size={18} color="var(--text-primary)" /> : <Eye size={18} />} 
-                  {isWatched ? 'Watched' : 'Mark as Watched'}
+                <button 
+                  className={`btn btn-secondary`} 
+                  onClick={handleWatch} 
+                  style={{ width: '100%', display: 'flex', justifyContent: 'center', opacity: isWatched ? 0.7 : 1, borderColor: isWatched ? 'var(--accent-green)' : '', color: isWatched ? 'var(--accent-green)' : '' }}
+                >
+                  {isWatched ? <Check size={18} /> : <Eye size={18} />} 
+                  {isWatched ? 'WATCHED' : 'MARK AS WATCHED'}
                 </button>
               </>
             )}
-            <button className="btn btn-ghost" onClick={onClose} style={{ marginLeft: 'auto' }}>
-              Close
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '16px' }}>
+            <button className="btn btn-ghost" onClick={onClose} style={{ fontSize: '0.8rem', opacity: 0.6 }}>
+              CLOSE DETAILS
             </button>
           </div>
         </div>
