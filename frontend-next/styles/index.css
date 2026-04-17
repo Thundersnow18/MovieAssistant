@@ -684,7 +684,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .feature-card {
   padding: 32px;
   border-radius: 20px;
-  background: var(--bg-glass);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-glass);
   transition: all 0.4s var(--ease-smooth);
 }
