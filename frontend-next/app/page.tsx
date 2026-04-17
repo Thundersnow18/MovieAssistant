@@ -200,7 +200,7 @@ export default function Landing() {
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             style={{
-            padding: '100px 40px',
+            padding: 'clamp(60px, 10vw, 80px) 20px clamp(40px, 8vw, 64px)',
             textAlign: 'center',
             background: 'var(--bg-glass)',
             backdropFilter: 'blur(20px)',
