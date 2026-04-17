@@ -315,14 +315,10 @@ export default function History() {
       {showStoryModal && enrichedMovies.length > 0 && (
         <div className="modal-backdrop" onClick={(e) => e.target === e.currentTarget && setShowStoryModal(false)} style={{ zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
-            <div style={{ 
-              transform: 'scale(0.85)', 
-              transformOrigin: 'center center', 
-              borderRadius: '24px', 
-              overflow: 'hidden', 
-              boxShadow: '0 20px 60px rgba(0,0,0,0.8)' 
-            }}>
-              <StoryCard ref={storyCardRef} movies={enrichedMovies} fullTasteMovies={dbHistoryMovies} totalHistoryOverride={totalHistory} username={user?.name || 'User'} theme={storyTheme} />
+            <div className="story-scale-container">
+              <div>
+                <StoryCard ref={storyCardRef} movies={enrichedMovies} fullTasteMovies={dbHistoryMovies} totalHistoryOverride={totalHistory} username={user?.name || 'User'} theme={storyTheme} />
+              </div>
             </div>
             
             <div style={{ display: 'flex', gap: '16px', marginTop: '-10px' }}>

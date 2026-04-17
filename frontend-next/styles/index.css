@@ -1432,6 +1432,24 @@ input[type="range"]::-webkit-slider-thumb:hover {
   font-size: 1.05rem;
 }
 
+/* ═══════════════════════════════════════════════
+   STORY CARD RESPONSIVE SCALING
+   ═══════════════════════════════════════════════ */
+
+.story-scale-container {
+  width: calc(400px * 0.85);
+  height: calc(711px * 0.85);
+  position: relative;
+}
+
+.story-scale-container > div {
+  transform: scale(0.85);
+  transform-origin: top left;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+
 
 /* ═══════════════════════════════════════════════
    RESPONSIVE
@@ -1483,5 +1501,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
   .landing-hero {
     padding-top: 0;
+  }
+
+  .story-scale-container {
+    width: calc(400px * 0.65);
+    height: calc(711px * 0.65);
+  }
+  .story-scale-container > div {
+    transform: scale(0.65);
+  }
+}
+
+@media (max-width: 400px) {
+  .story-scale-container {
+    width: calc(400px * 0.58);
+    height: calc(711px * 0.58);
+  }
+  .story-scale-container > div {
+    transform: scale(0.58);
   }
 }
