@@ -1474,4 +1474,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .features-grid {
     grid-template-columns: 1fr;
   }
+
+  .landing-hero {
+    padding-top: 0;
+  }
 }

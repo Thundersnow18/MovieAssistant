@@ -197,8 +197,6 @@ export default function Landing() {
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <motion.div 
             className="glass-card scroll-reveal" 
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             style={{
             padding: 'clamp(60px, 10vw, 80px) 20px clamp(40px, 8vw, 64px)',
             textAlign: 'center',
