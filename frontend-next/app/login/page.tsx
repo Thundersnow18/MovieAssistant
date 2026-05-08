@@ -1,8 +1,9 @@
 "use client";
 import Link from 'next/link';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from "@/context/AuthContext";
+import { historyAPI } from "@/api/client";
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -11,6 +12,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +20,21 @@ export default function Login() {
     setLoading(true);
     try {
       await login(email, password);
-      router.push('/discover');
+      
+      const redirectUrl = searchParams.get('redirect') || '/discover';
+      if (redirectUrl === '/onboarding') {
+        const localMovies = localStorage.getItem('taste_dna_movies');
+        if (localMovies) {
+          try {
+            const moviesArray = JSON.parse(localMovies);
+            for (const movie of moviesArray) {
+              await historyAPI.addToHistory(movie.id, 'movie').catch(() => {});
+            }
+          } catch(e) {}
+        }
+      }
+      
+      router.push(redirectUrl);
     } catch (err: any) {
       setError(err.message || 'Login failed');
     } finally {

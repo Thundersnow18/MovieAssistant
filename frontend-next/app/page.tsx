@@ -77,16 +77,17 @@ export default function Landing() {
             Set your filters, hit discover, and get personalized recommendations instantly.
           </motion.p>
           <motion.div 
-            className="hero-cta"
+            className="hero-cta scroll-reveal" 
+            style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Link href="/discover" className="btn btn-primary" id="hero-discover-btn">
-              DISCOVER MOVIES
+            <Link href="/onboarding" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <Compass size={20} /> Find Your Taste DNA
             </Link>
-            <Link href="/register" className="btn btn-secondary" id="hero-register-btn">
-              CREATE ACCOUNT
+            <Link href="/register" className="btn btn-secondary">
+              Create Account
             </Link>
           </motion.div>
         </motion.div>
@@ -228,8 +229,8 @@ export default function Landing() {
                 Join now and never waste time browsing again. Let our Taste DNA engine do the heavy lifting.
               </p>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
-                <Link href="/discover" className="btn btn-primary" style={{ padding: '16px 36px', fontSize: '1.05rem', letterSpacing: '0.1em', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                  <Compass size={20} /> START DISCOVERING
+                <Link href="/onboarding" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '1.1rem', padding: '16px 32px' }}>
+                  <Compass size={24} /> Find Your Taste DNA
                 </Link>
               </motion.div>
             </div>
