@@ -10,7 +10,7 @@ interface StoryCardProps {
   username: string;
   theme?: StoryTheme;
   totalHistoryOverride?: number;
-  isGuest?: boolean;
+  showRoast?: boolean;
 }
 
 const genreRoasts: Record<string, string> = {
@@ -37,7 +37,7 @@ const themeStyles = {
   light: { bg: '#F8F9FA', text: '#111111', accent: 'rgba(0,0,0,0.06)', grad: 'rgba(248,249,250,0.3) 0%, rgba(248,249,250,1)', dot: 'rgba(0,0,0,0.08)' },
 };
 
-const StoryCard = forwardRef<HTMLDivElement, StoryCardProps>(({ movies, fullTasteMovies, username, theme = 'dark', totalHistoryOverride, isGuest }, ref) => {
+const StoryCard = forwardRef<HTMLDivElement, StoryCardProps>(({ movies, fullTasteMovies, username, theme = 'dark', totalHistoryOverride, showRoast }, ref) => {
   const [base64Bg, setBase64Bg] = useState<string>('');
 
   const totalMovies = totalHistoryOverride || movies?.length || 0;
@@ -218,7 +218,7 @@ const StoryCard = forwardRef<HTMLDivElement, StoryCardProps>(({ movies, fullTast
           </div>
         </div>
 
-        {isGuest && topGenres.length > 0 && (
+        {showRoast && topGenres.length > 0 && (
           <div style={{ 
             marginTop: '-15px', 
             marginBottom: '30px', 
