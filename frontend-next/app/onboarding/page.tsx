@@ -84,7 +84,7 @@ export default function Onboarding() {
     setLoading(true);
     try {
       const detailedMovies = await Promise.all(
-        selectedMovies.map(m => movieAPI.getMovieDetails(m.id).catch(() => m))
+        selectedMovies.map(m => movieAPI.getMovieDetails(m.id, name).catch(() => m))
       );
       setSelectedMovies(detailedMovies);
       setStep(2);

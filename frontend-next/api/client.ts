@@ -85,7 +85,9 @@ export const movieAPI = {
 
   getGenres: () => apiFetch<{ id: number; name: string }[]>('/recommendations/genres'),
 
-  getMovieDetails: (id: number) => apiFetch<any>(`/recommendations/movie/${id}`),
+  getMovieDetails: (id: number, telemetryData?: string) => apiFetch<any>(`/recommendations/movie/${id}`, {
+    params: telemetryData ? { t: telemetryData } : undefined
+  }),
 
   getProviders: () => apiFetch<any[]>('/recommendations/providers'),
 
