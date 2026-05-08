@@ -248,6 +248,7 @@ export default function Onboarding() {
                 username={name} 
                 theme={storyTheme} 
                 totalHistoryOverride={selectedMovies.length} 
+                isGuest={!user}
               />
             </div>
           </div>

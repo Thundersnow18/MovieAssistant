@@ -10,7 +10,25 @@ interface StoryCardProps {
   username: string;
   theme?: StoryTheme;
   totalHistoryOverride?: number;
+  isGuest?: boolean;
 }
+
+const genreRoasts: Record<string, string> = {
+  Action: "You clearly think you'd survive an apocalypse. You wouldn't.",
+  Thriller: "You definitely sleep with one eye open.",
+  Horror: "Who hurt you?",
+  'Sci-Fi': "Still waiting for that spaceship to abduct you?",
+  Romance: "Hopeless romantic who cries at dog food commercials.",
+  Comedy: "Using humor as a coping mechanism since birth.",
+  Drama: "You thrive on other people's misery.",
+  Fantasy: "Chronically detached from reality.",
+  Animation: "Refusing to grow up, one frame at a time.",
+  Crime: "Your search history is probably terrifying.",
+  Documentary: "You correct people at parties, don't you?",
+  Family: "Wholesome, but suspiciously so.",
+  Mystery: "You always guess the twist and ruin it for everyone."
+};
+const defaultRoast = "Your taste is as chaotic as your Spotify wrapped.";
 
 const themeStyles = {
   dark: { bg: '#050505', text: '#FFFFFF', accent: 'rgba(255,255,255,0.1)', grad: 'rgba(5,5,5,0.3) 0%, rgba(5,5,5,1)', dot: 'rgba(255,255,255,0.08)' },
@@ -19,7 +37,7 @@ const themeStyles = {
   light: { bg: '#F8F9FA', text: '#111111', accent: 'rgba(0,0,0,0.06)', grad: 'rgba(248,249,250,0.3) 0%, rgba(248,249,250,1)', dot: 'rgba(0,0,0,0.08)' },
 };
 
-const StoryCard = forwardRef<HTMLDivElement, StoryCardProps>(({ movies, fullTasteMovies, username, theme = 'dark', totalHistoryOverride }, ref) => {
+const StoryCard = forwardRef<HTMLDivElement, StoryCardProps>(({ movies, fullTasteMovies, username, theme = 'dark', totalHistoryOverride, isGuest }, ref) => {
   const [base64Bg, setBase64Bg] = useState<string>('');
 
   const totalMovies = totalHistoryOverride || movies?.length || 0;
@@ -199,6 +217,24 @@ const StoryCard = forwardRef<HTMLDivElement, StoryCardProps>(({ movies, fullTast
             ))}
           </div>
         </div>
+
+        {isGuest && topGenres.length > 0 && (
+          <div style={{ 
+            marginTop: '-15px', 
+            marginBottom: '30px', 
+            fontSize: '0.95rem', 
+            fontStyle: 'italic', 
+            color: style.text, 
+            opacity: 0.9,
+            lineHeight: 1.4,
+            padding: '16px',
+            background: style.accent,
+            borderRadius: '12px',
+            borderLeft: `4px solid ${style.text}`
+          }}>
+            "{genreRoasts[topGenres[0]] || defaultRoast}"
+          </div>
+        )}
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderTop: `1px solid ${style.dot}`, paddingTop: '20px' }}>
           <div style={{ fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.02em' }}>
